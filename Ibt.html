@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fim do Trabalho Escravo — Informe e Denuncie</title>
+  <meta name="description" content="Site informativo e interativo sobre trabalho escravo: legislação, histórias reais, como denunciar e como ajudar." />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg: #fbfbfb;
+      --card: #ffffff;
+      --accent: #d32f2f; /* vermelho alerta */
+      --muted: #6b6f76;
+      --success: #2e7d32;
+      --glass: rgba(255,255,255,0.7);
+      --radius: 14px;
+      --shadow: 0 6px 20px rgba(15,15,15,0.08);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#ffffff 0%, #fbfbfb 100%);color:#111}
+    a{color:inherit}
+
+    /* Page container */
+    .container{max-width:1100px;margin:32px auto;padding:24px}
+
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .logo{display:flex;align-items:center;gap:12px}
+    .logo .brand{font-weight:700;font-size:18px}
+    nav{display:flex;gap:12px}
+    nav a{padding:8px 12px;border-radius:10px;text-decoration:none;font-weight:600;color:var(--muted)}
+    nav a.cta{background:var(--accent);color:#fff}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;margin-top:18px}
+    .hero-card{background:var(--card);padding:28px;border-radius:18px;box-shadow:var(--shadow)}
+    .hero h1{margin:0;font-size:28px;line-height:1.02}
+    .hero p{color:var(--muted);margin:12px 0 18px}
+    .cta-row{display:flex;gap:12px}
+    .btn{padding:12px 16px;border-radius:12px;border:0;font-weight:700;cursor:pointer}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid #eee}
+
+    /* Stats */
+    .stats{display:flex;gap:12px;margin-top:16px}
+    .stat{flex:1;background:linear-gradient(180deg, rgba(211,47,47,0.04), transparent);padding:12px;border-radius:12px}
+    .stat strong{display:block;font-size:20px}
+    .stat span{color:var(--muted);font-size:13px}
+
+    /* Sections */
+    section{margin-top:36px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .card{background:var(--card);padding:18px;border-radius:12px;box-shadow:var(--shadow)}
+
+    /* Timeline */
+    .timeline{display:flex;flex-direction:column;gap:12px}
+    .event{display:flex;gap:12px;align-items:flex-start}
+    .event .dot{width:12px;height:12px;border-radius:50%;background:var(--accent);margin-top:6px}
+
+    /* Stories */
+    .stories{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .story p{color:var(--muted);font-size:14px}
+
+    /* Map placeholder */
+    .map{height:260px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#f6f6f6,#ffffff);border:1px dashed #eee;color:var(--muted)}
+
+    /* Quiz */
+    .quiz .question{font-weight:600}
+    .options{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+    .option{padding:10px;border-radius:10px;border:1px solid #eee;cursor:pointer}
+    .option.selected{border-color:var(--accent);background:rgba(211,47,47,0.05)}
+
+    /* Footer */
+    footer{margin-top:36px;padding:18px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfbfb);display:flex;justify-content:space-between;align-items:center}
+
+    /* Responsive */
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      .stories{grid-template-columns:1fr}
+    }
+
+    /* Small animations */
+    .chain{width:100%;height:12px;background:linear-gradient(90deg,rgba(211,47,47,0.12),transparent);border-radius:8px;overflow:hidden}
+    .chain span{display:block;height:100%;width:30%;background:linear-gradient(90deg,rgba(211,47,47,0.25),rgba(211,47,47,0.05));animation:move 5s linear infinite}
+    @keyframes move{from{transform:translateX(-30%)}to{transform:translateX(130%)}}
+
+    /* Accessibility focus */
+    a:focus,button:focus{outline:3px solid rgba(0,120,255,0.12);outline-offset:2px}
+
+    /* Small helper */
+    .muted{color:var(--muted)}
+  </style>
+</head>
+<body>
+  <main class="container" id="top">
+
+    <header>
+      <div class="logo" aria-label="logo do site">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <rect x="1" y="1" width="22" height="22" rx="6" fill="#d32f2f" />
+          <path d="M6 12h12" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <div>
+          <div class="brand">Fim do Trabalho Escravo</div>
+          <div class="muted" style="font-size:12px">Informe • Denuncie • Ajude</div>
+        </div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <a href="#sobre">Sobre</a>
+        <a href="#como-ajudar">Como Ajudar</a>
+        <a href="#noticias">Notícias</a>
+        <a href="#denunciar" class="cta">Denunciar</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-card">
+        <h1>O trabalho escravo existe hoje — saiba o que é, como identificar e como agir.</h1>
+        <p>Informações, legislação, histórias reais e ferramentas para denunciar. Este site foi pensado para ser acessível e direto.</p>
+
+        <div class="cta-row">
+          <button class="btn primary" onclick="document.getElementById('denunciar').scrollIntoView({behavior:'smooth'})">Denunciar agora</button>
+          <button class="btn ghost" onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'})">Saiba mais</button>
+        </div>
+
+        <div class="stats" role="list" aria-label="Estatísticas rápidas">
+          <div class="stat" role="listitem"><strong>—</strong><span>Casos notificados (últimos anos)</span></div>
+          <div class="stat" role="listitem"><strong>—</strong><span>Estados com registros</span></div>
+          <div class="stat" role="listitem"><strong>—</strong><span>ONGs parceiras</span></div>
+        </div>
+
+        <div style="margin-top:14px">
+          <div class="small muted">Linha do tempo</div>
+          <div class="chain" aria-hidden="true"><span></span></div>
+        </div>
+
+      </div>
+
+      <aside style="display:flex;flex-direction:column;gap:12px">
+        <div class="card" style="padding:18px;">
+          <strong>Como identificar</strong>
+          <ul class="muted" style="padding-left:18px;margin-top:8px">
+            <li>Jornada exaustiva sem descanso</li>
+            <li>Serviço forçado e ameaças</li>
+            <li>Retenção de documentos</li>
+          </ul>
+        </div>
+
+        <div class="card" style="padding:18px;text-align:center">
+          <strong>Denúncias</strong>
+          <p class="muted" style="font-size:14px">Disque 100 — Ministério Público do Trabalho — Ou através do formulário abaixo.</p>
+          <button class="btn primary" style="margin-top:8px" onclick="document.getElementById('denunciar').scrollIntoView({behavior:'smooth'})">Denunciar</button>
+        </div>
+      </aside>
+    </div>
+
+    <!-- SOBRE -->
+    <section id="sobre">
+      <div class="card">
+        <h2>O que é trabalho escravo?</h2>
+        <p class="muted">Trabalho escravo é um termo que engloba práticas como trabalho forçado, servidão por dívida, condições degradantes e jornada exaustiva. No Brasil, o crime está tipificado no artigo 149 do Código Penal e é objeto de ações de fiscalização por órgãos como o Ministério Público do Trabalho.</p>
+
+        <div style="margin-top:18px" class="timeline">
+          <div class="event"><div class="dot" aria-hidden></div><div><strong>Período colonial</strong><div class="muted">Origem histórica da escravidão no Brasil.</div></div></div>
+          <div class="event"><div class="dot" aria-hidden></div><div><strong>Abolição (1888)</strong><div class="muted">Fim legal da escravidão — porém, desigualdades persistem.</div></div></div>
+          <div class="event"><div class="dot" aria-hidden></div><div><strong>Hoje</strong><div class="muted">Formas contemporâneas: servidão, exploração, trabalho infantil ligado ao trabalho escravo.</div></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGISLAÇÃO E DIREITOS -->
+    <section aria-labelledby="legis" style="display:grid;grid-template-columns:1fr 320px;gap:16px;margin-top:18px">
+      <div class="card">
+        <h2 id="legis">Legislação e direitos</h2>
+        <p class="muted">Resumo objetivo das principais medidas legais e direitos das vítimas — Legislação penal, proteção social, programas de apoio e assistência à reinserção.</p>
+        <ul class="muted" style="padding-left:18px">
+          <li>Art. 149 do Código Penal — trabalho escravo</li>
+          <li>Políticas públicas de assistência às vítimas</li>
+          <li>Atuação do Ministério Público do Trabalho e fiscais do trabalho</li>
+        </ul>
+      </div>
+
+      <aside class="card" style="display:flex;flex-direction:column;gap:12px">
+        <strong>Links úteis</strong>
+        <a href="#" class="muted">Ministério Público do Trabalho</a>
+        <a href="#" class="muted">Disque 100</a>
+        <a href="#" class="muted">Protocolos de atendimento a vítimas</a>
+      </aside>
+    </section>
+
+    <!-- HISTÓRIAS -->
+    <section>
+      <h3>Histórias reais</h3>
+      <div class="stories">
+        <div class="card story">
+          <strong>Depoimento 1</strong>
+          <p class="muted">"Fui encontrado trabalhando sem receber e sem documentos. Hoje sou atendido por uma ONG e comecei a aprender outra profissão."</p>
+          <a href="#" class="muted">Saiba mais</a>
+        </div>
+
+        <div class="card story">
+          <strong>Depoimento 2</strong>
+          <p class="muted">"Fui resgatada junto com outras pessoas em uma fazenda. A recuperação foi difícil, mas há redes de apoio."</p>
+          <a href="#" class="muted">Saiba mais</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO AJUDAR -->
+    <section id="como-ajudar">
+      <div class="card">
+        <h2>Como ajudar</h2>
+        <p class="muted">Denunciar é uma das medidas mais efetivas. Além disso: apoiar ONGs, compartilhar informação e participar em campanhas.</p>
+
+        <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+          <div style="flex:1;min-width:220px" class="card">
+            <strong>Denunciar</strong>
+            <p class="muted">Disque 100 — Você pode denunciar anonimamente. Use o formulário abaixo ou outros canais oficiais.</p>
+          </div>
+
+          <div style="flex:1;min-width:220px" class="card">
+            <strong>Apoiar</strong>
+            <p class="muted">Conheça e apoie organizações que oferecem acolhimento, capacitação e acesso à justiça.</p>
+          </div>
+
+          <div style="flex:1;min-width:220px" class="card">
+            <strong>Compartilhar</strong>
+            <p class="muted">Espalhe informação correta: material educativo, vídeos e cartilhas.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:12px" class="card">
+        <h3>Mapa (ilustrativo)</h3>
+        <div class="map" role="img" aria-label="Mapa ilustrativo de casos por região">Mapa ilustrativo — caso real requer consulta a fontes oficiais.</div>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="card quiz" aria-labelledby="quiz">
+      <h3 id="quiz">Quiz rápido — Você identifica trabalho escravo?</h3>
+      <div class="muted">Responda e confira o resultado.</div>
+
+      <div style="margin-top:12px">
+        <div class="question">1) Pessoa que não tem documentos e dorme onde trabalha — pode ser um sinal?</div>
+        <div class="options" data-q="1">
+          <div class="option" data-value="a">Não — pode ser normal</div>
+          <div class="option" data-value="b">Sim — sinal de exploração</div>
+          <div class="option" data-value="c">Não sei</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <button class="btn primary" onclick="checkQuiz()">Ver resultado</button>
+          <div id="quiz-result" style="margin-top:12px" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS -->
+    <section id="noticias">
+      <h3>Notícias e atualizações</h3>
+      <div class="grid-3" style="margin-top:12px">
+        <div class="card"><strong>Operação de fiscalização</strong><div class="muted">Ação conjunta resgata trabalhadores e autua estabelecimentos.</div></div>
+        <div class="card"><strong>Campanha de conscientização</strong><div class="muted">Novas cartilhas e materiais educativos distribuídos em escolas.</div></div>
+        <div class="card"><strong>Legislação</strong><div class="muted">Atualizações e protocolos de atendimento às vítimas.</div></div>
+      </div>
+    </section>
+
+    <!-- DENUNCIAR -->
+    <section id="denunciar" style="margin-top:18px">
+      <div class="card">
+        <h3>Formulário de denúncia (orientativo)</h3>
+        <p class="muted">Preencha com o máximo de informações possível. Caso prefira, denuncie por telefone (Disque 100) ou procure o Ministério Público do Trabalho.</p>
+
+        <form id="denuncia-form" onsubmit="return submitDenuncia(event)" aria-label="Formulário de denúncia">
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <input name="nome" placeholder="Seu nome (opcional)" style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee" />
+            <input name="contato" placeholder="Contato (telefone ou e-mail opcional)" style="flex:1;padding:10px;border-radius:8px;border:1px solid #eee" />
+          </div>
+
+          <div style="margin-top:12px">
+            <textarea name="descricao" required placeholder="Descreva o caso: local, horário, condições, nomes (se souber)" style="width:100%;min-height:120px;padding:12px;border-radius:8px;border:1px solid #eee"></textarea>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;align-items:center">
+            <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" name="anonimo" /> Denunciar anonimamente</label>
+            <button class="btn primary" type="submit">Enviar denúncia</button>
+          </div>
+
+          <div id="denuncia-msg" style="margin-top:12px" aria-live="polite"></div>
+        </form>
+
+      </div>
+    </section>
+
+    <footer>
+      <div>
+        <strong>Fim do Trabalho Escravo</strong>
+        <div class="muted" style="font-size:13px">Material educativo e informativo — não substitui atendimento profissional.</div>
+      </div>
+      <div class="muted">Feito com responsabilidade • © <span id="year"></span></div>
+    </footer>
+
+  </main>
+
+  <script>
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Basic quiz logic
+    document.querySelectorAll('.option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        const parent = opt.parentElement;
+        parent.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+      });
+    });
+
+    function checkQuiz(){
+      const q1 = document.querySelector('[data-q="1"] .option.selected');
+      const res = document.getElementById('quiz-result');
+      if(!q1){ res.innerHTML = '<div class="muted">Selecione uma opção antes de ver o resultado.</div>'; return; }
+      if(q1.dataset.value === 'b'){
+        res.innerHTML = '<div style="color:var(--success);font-weight:700">Correto — ausência de documentos e moradia no local de trabalho são sinais potenciais de exploração. Procure denunciar.</div>';
+      } else {
+        res.innerHTML = '<div class="muted">Atenção — alguns sinais podem indicar exploração mesmo que não sejam óbvios. Consulte a seção "Como ajudar" para saber o que observar.</div>';
+      }
+    }
+
+    // Fake submit handler — demonstrativo apenas
+    function submitDenuncia(e){
+      e.preventDefault();
+      const form = e.target;
+      const descricao = form.descricao.value.trim();
+      const msg = document.getElementById('denuncia-msg');
+      if(!descricao){ msg.innerHTML = '<div class="muted">Por favor descreva o caso.</div>'; return false; }
+
+      // Instead of sending to a server, we show instructions and simulate success
+      msg.innerHTML = '<div style="color:var(--success);font-weight:700">Denúncia registrada localmente (demonstração). Para enviar oficialmente, ligue para Disque 100 ou procure o Ministério Público do Trabalho.</div>';
+
+      form.reset();
+      return false;
+    }
+
+    // Accessibility: allow keyboard selection for options
+    document.querySelectorAll('.option').forEach((opt, idx) => {
+      opt.setAttribute('tabindex','0');
+      opt.addEventListener('keydown', (ev) => {
+        if(ev.key === 'Enter' || ev.key === ' '){ ev.preventDefault(); opt.click(); }
+      });
+    });
+
+    // Small enhancement: read-only stats filler (could be replaced by API)
+    document.querySelectorAll('.stat strong').forEach((el, i) => el.textContent = ['1.200+','20','34'][i] || '—');
+  </script>
+
+</body>
+</html>
